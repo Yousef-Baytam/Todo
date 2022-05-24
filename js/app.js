@@ -53,3 +53,4 @@ $('#submit').click((e) => {
 })
 
 $('.fa-xmark').click(() => $('.form-bg').toggle("fast"))
+$('.fa-pen-to-square').click(() => $())
