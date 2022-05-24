@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin: 2vw 10vw;
+}
+
+.header div {
+    display: flex;
+}
+
+.header div div {
+    height: 2.5em;
+    margin: 0em 1em;
+    align-self: center;
+}
