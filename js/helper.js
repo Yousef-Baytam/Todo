@@ -10,3 +10,13 @@ const todoId = () => {
     return rand
 }
 
+const getLocalStorageItems = () => {
+    let localItems = []
+    let i = 1
+    while (JSON.parse(localStorage.getItem(`todo:${ i }`))) {
+        localItems.push(JSON.parse(localStorage.getItem(`todo:${ i }`)))
+        i++
+    }
+    return localItems
+}
+
