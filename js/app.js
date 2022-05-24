@@ -1,16 +1,20 @@
 let todos = []
 
+todos = getLocalStorageItems()
+
 $('.form-bg').toggle()
 $('#add-item').click(() => $('.form-bg').toggle("fast"))
 $('#submit').click((e) => {
     e.preventDefault()
+    let id = todoId()
     $('.form-bg').toggle("fast")
     todos.push({
         completed: false,
-        taskId: 231,
+        taskId: todoId,
         title: `${ $('#title').val() }`,
         point: `${ $('#Point').val() }`,
-        createdTime: `${ new Date().getDate() }:${ new Date().getDate() }:${ new Date().getDate() }`
+        createdTime: `${ new Date().getDate() }:${ new Date().getDate() }:${ new Date().getDate() }`,
+        dueTime: `${ $('#due-time').val() }`
     })
 
     $(`<div class="element">
@@ -18,7 +22,7 @@ $('#submit').click((e) => {
     <input type="checkbox">
     </div>
     <div>
-        <p>${ todoId() }</p>
+        <p>${ id }</p>
     </div>
     <div>
         <p>${ $('#title').val() }</p>
@@ -36,4 +40,8 @@ $('#submit').click((e) => {
         ${ $('#due-time').val() }
     </div></div>`)
         .appendTo(".list-container")
+
+    localStorage.clear()
+    fillLocalStorage(todos)
 })
+
