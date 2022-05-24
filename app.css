@@ -30,3 +30,25 @@ body {
     margin: 0em 1em;
     align-self: center;
 }
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-header div,
+.element div {
+    flex-grow: 1;
+    text-align: center;
+    min-width: 12vw;
+    max-width: 12vw;
+}
+
+.element,
+.list-header {
+    display: flex;
+    min-height: 10vh;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2vw;
+}
