@@ -96,3 +96,8 @@ body {
     align-content: center;
     justify-content: center;
 }
+
+.element i {
+    min-width: 2.5em;
+    text-align: center;
+}

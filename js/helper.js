@@ -33,6 +33,7 @@ const fillLocalStorage = (arr) => {
 const renderTodos = (arr) => {
     for (todo of arr) {
         $(`<div class="element">
+        <i class="fa-solid fa-pen-to-square"></i>
     <div>
     <input type="checkbox" name="Completed" id="Completed" ${ todo.completed ? checked : '' }>
     </div>
