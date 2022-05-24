@@ -1,15 +1,11 @@
-let Todos = []
-
-const curTime = () => {
-    return `${ new Date().getDate() }:${ new Date().getMonth() + 1 }:${ new Date().getFullYear() }  ${ new Date().getHours() }:${ new Date().getMinutes() }:${ new Date().getSeconds() }`
-}
+let todos = []
 
 $('.form-bg').toggle()
 $('#add-item').click(() => $('.form-bg').toggle("fast"))
 $('#submit').click((e) => {
     e.preventDefault()
     $('.form-bg').toggle("fast")
-    Todos.push({
+    todos.push({
         completed: false,
         taskId: 231,
         title: `${ $('#title').val() }`,
@@ -22,7 +18,7 @@ $('#submit').click((e) => {
     <input type="checkbox">
     </div>
     <div>
-        <p>234</p>
+        <p>${ todoId() }</p>
     </div>
     <div>
         <p>${ $('#title').val() }</p>
