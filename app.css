@@ -74,3 +74,23 @@ body {
     height: fit-content;
     border-radius: 10px;
 }
+
+.form div {
+    display: flex;
+    align-items: center;
+    padding: 1.5em;
+}
+
+.form div label {
+    min-width: 10em;
+}
+
+.form div input,
+.form div select {
+    width: 100%;
+}
+
+.form div:last-child {
+    align-content: center;
+    justify-content: center;
+}
