@@ -106,4 +106,16 @@ body {
 .element i {
     min-width: 2.5em;
     text-align: center;
+
+}
+
+i {
+    cursor: pointer;
+    color: var(--tertiary-color);
+}
+
+.form div:nth-of-type(1) {
+    padding: 0;
+    justify-content: flex-end;
+    padding: 1em 1em 0 0;
 }
