@@ -29,3 +29,31 @@ const fillLocalStorage = (arr) => {
         index++
     }
 }
+
+const renderTodos = (arr) => {
+    for (todo of arr) {
+        $(`<div class="element">
+    <div>
+    <input type="checkbox" name="Completed" id="Completed" ${ todo.completed ? checked : '' }>
+    </div>
+    <div>
+        <p>${ todo.taskId }</p>
+    </div>
+    <div>
+        <p>${ todo.title }</p>
+    </div>
+    <div>
+        <p>${ todo.Description }</p>
+    </div>
+    <div>
+        ${ todo.point }
+    </div>
+    <div>
+        <p>${ todo.createdTime }</p>
+    </div>
+    <div>
+        ${ todo.dueTime }
+    </div></div>`)
+            .appendTo(".list-container")
+    }
+}

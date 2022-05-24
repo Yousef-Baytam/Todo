@@ -2,6 +2,8 @@ let todos = []
 
 todos = getLocalStorageItems()
 
+renderTodos(todos)
+
 $('.form-bg').toggle()
 $('#add-item').click(() => $('.form-bg').toggle("fast"))
 $('#submit').click((e) => {
@@ -12,8 +14,9 @@ $('#submit').click((e) => {
         completed: false,
         taskId: todoId,
         title: `${ $('#title').val() }`,
+        description: `${ $('#Description').val() }`,
         point: `${ $('#Point').val() }`,
-        createdTime: `${ new Date().getDate() }:${ new Date().getDate() }:${ new Date().getDate() }`,
+        createdTime: `${ curTime() }`,
         dueTime: `${ $('#due-time').val() }`
     })
 
