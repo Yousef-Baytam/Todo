@@ -1,7 +1,24 @@
+:root {
+    --main-color: #353941;
+    --primary-color: #26282B;
+    --secondary-color: #F0F0F0;
+    --tertiary-color: #90B8F8;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    color: #F0F0F0;
+    background-color: var(--main-color);
+}
+
 .header {
     display: flex;
     justify-content: space-between;
-    margin: 2vw 10vw;
+    padding: 2vw 10vw;
+    background-color: var(--primary-color);
 }
 
 .header div {
