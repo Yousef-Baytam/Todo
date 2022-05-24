@@ -20,3 +20,12 @@ const getLocalStorageItems = () => {
     return localItems
 }
 
+const fillLocalStorage = (arr) => {
+    let index = 1
+    for (todo of arr) {
+        localStorage.setItem(`todo:${ index }`,
+            JSON.stringify(todo)
+        )
+        index++
+    }
+}
