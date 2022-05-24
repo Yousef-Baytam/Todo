@@ -41,11 +41,15 @@ $('#submit').click((e) => {
         <p>${ curTime() }</p>
     </div>
     <div>
-        ${ $('#due-time').val() }
+        ${ curTime($('#due-time').val()) }
     </div></div>`)
         .appendTo(".list-container")
-
+    $('#title').val('')
+    $('#Description').val('')
+    $('#Point').val('1')
+    $('#due-time').val('')
     localStorage.clear()
     fillLocalStorage(todos)
 })
 
+$('.fa-xmark').click(() => $('.form-bg').toggle("fast"))
