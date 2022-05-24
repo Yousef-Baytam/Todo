@@ -64,3 +64,13 @@ body {
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.7);
 }
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+}
