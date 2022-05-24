@@ -45,6 +45,12 @@ body {
     max-width: 12vw;
 }
 
+.list-header div:nth-of-type(4),
+.element div:nth-of-type(4) {
+    flex-grow: 1;
+    max-width: 20em;
+}
+
 .element,
 .list-header {
     display: flex;

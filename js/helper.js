@@ -44,7 +44,7 @@ const renderTodos = (arr) => {
         <p>${ todo.title }</p>
     </div>
     <div>
-        <p>${ todo.Description }</p>
+        <p>${ todo.description }</p>
     </div>
     <div>
         ${ todo.point }

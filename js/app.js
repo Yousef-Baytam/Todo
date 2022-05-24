@@ -12,7 +12,7 @@ $('#submit').click((e) => {
     $('.form-bg').toggle("fast")
     todos.push({
         completed: false,
-        taskId: todoId,
+        taskId: id,
         title: `${ $('#title').val() }`,
         description: `${ $('#Description').val() }`,
         point: `${ $('#Point').val() }`,
@@ -21,6 +21,7 @@ $('#submit').click((e) => {
     })
 
     $(`<div class="element">
+    <i class="fa-solid fa-pen-to-square"></i>
     <div>
     <input type="checkbox">
     </div>
