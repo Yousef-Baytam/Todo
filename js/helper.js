@@ -124,3 +124,4 @@ renderTodos = (arr) => {
     deleteTask('.fa-trash-can')
     progress('input[type=checkbox]')
 }
+

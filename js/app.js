@@ -94,7 +94,22 @@ const edit = (selector) =>
         $('#due-time').val(targetTask.dueTime)
     })
 
+const sortByPoint = (arr, order = 'asc') => {
+    console.log(arr)
+    if (order === 'asc')
+        arr.sort((a, b) => {
+            console.log(a.point, b.point)
+            return a.point - b.point
+        })
+    else {
+        arr.sort((a, b) => {
+            console.log(a.point, b.point)
+            return b.point - a.point
+        })
+    }
+}
 edit('.fa-pen-to-square')
 progress('input[type=checkbox]')
 deleteTask('.fa-trash-can')
 renderTodos(todos)
+sortByPoint(todos, 'x')
