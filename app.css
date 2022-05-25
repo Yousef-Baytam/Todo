@@ -3,6 +3,7 @@
     --primary-color: #26282B;
     --secondary-color: #F0F0F0;
     --tertiary-color: #90B8F8;
+    --diabled-color: #2c3036;
 }
 
 * {
@@ -121,5 +122,7 @@ i {
 }
 
 .done {
-    background-color: var(--primary-color);
+    background-color: var(--diabled-color);
+    text-decoration: line-through;
+    text-decoration-color: red;
 }

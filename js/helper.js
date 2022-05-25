@@ -36,7 +36,7 @@ const fillLocalStorage = (arr) => {
 const renderTodos = (arr) => {
     $('.list-container .element').remove()
     for (todo of arr) {
-        $(`<div class="element ${ todo.completed ? 'done' : '' }">
+        $(`<div class="element ${ todo.completed ? 'done' : '' }" id="div${ todo.taskId }">
         <i class="fa-solid fa-pen-to-square" id="pen${ todo.taskId }"></i>
     <div>
     <input type="checkbox" name="Completed" id="Completed${ todo.taskId }" ${ todo.completed ? 'checked' : '' }>
@@ -65,6 +65,8 @@ const renderTodos = (arr) => {
 
 const updateEdits = (task) => {
     let id = `#t${ task.taskId }`
+    let divId = `#div${ task.taskId }`
+    $(divId).toggleClass('done')
     $(`${ id }:nth-of-type(3)`).html(`<p>${ task.title }</p>`)
     $(`${ id }:nth-of-type(4)`).html(`<p>${ task.description }</p>`)
     $(`${ id }:nth-of-type(5)`).html(`<p>${ task.point }</p>`)

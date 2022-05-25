@@ -126,6 +126,7 @@ $('input[type=checkbox]').change(
                 todos[i] = targetTask
             }
         }
+        updateEdits(targetTask)
         localStorage.clear()
         fillLocalStorage(todos)
         targetTask = {}
