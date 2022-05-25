@@ -73,3 +73,4 @@ const updateEdits = (task) => {
     $(`${ id }:nth-of-type(7)`).html(`<p>${ curTime(task.dueTime) }</p>`)
 }
 
+

@@ -39,7 +39,7 @@ $('#submit').click((e) => {
             dueTime: `${ $('#due-time').val() }`
         })
 
-        $(`<div class="element">
+        $(`<div class="element" id="div${ id }">
         <i class="fa-solid fa-pen-to-square" id="pen${ id }"></i>
         <div>
         <input type="checkbox" name="Completed" id="Completed${ id }">
@@ -80,6 +80,35 @@ $('#submit').click((e) => {
         $('#due-time').val(targetTask.dueTime)
     })
 
+    $(`#Completed${ id }`).change(
+        function (e) {
+            console.log(e)
+            for (let todo of todos) {
+                let checkboxId = `Completed${ todo.taskId }`
+                if (checkboxId === e.target.id) {
+                    targetTask = todo
+                    console.log(targetTask)
+                    break
+                }
+            }
+            if (e.target.checked) {
+                targetTask.completed = true
+            }
+            else {
+                targetTask.completed = false
+            }
+            for (let i = 0; i < todos.length; i++) {
+                if (todos[i].taskId === targetTask.taskId) {
+                    todos[i] = targetTask
+                }
+            }
+            console.log(targetTask)
+            updateEdits(targetTask)
+            localStorage.clear()
+            fillLocalStorage(todos)
+            targetTask = {}
+        });
+
     $('#title').val('')
     $('#Description').val('')
     $('#Point').val('1')
@@ -115,7 +144,7 @@ $('input[type=checkbox]').change(
                 break
             }
         }
-        if ($(this).is(':checked')) {
+        if (e.target.checked) {
             targetTask.completed = true
         }
         else {
