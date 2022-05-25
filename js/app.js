@@ -23,6 +23,7 @@ $('#submit').click((e) => {
         $('.form-bg').toggle()
         editTaskId = 0
         updateEdits(targetTask)
+        targetTask = {}
 
     } else {
         let id = todoId()
@@ -38,26 +39,26 @@ $('#submit').click((e) => {
         })
 
         $(`<div class="element">
-        <i class="fa-solid fa-pen-to-square"></i>
+        <i class="fa-solid fa-pen-to-square" id="${ id }"></i>
         <div>
-        <input type="checkbox">
+        <input type="checkbox" name="Completed" id="Completed${ id }">
         </div>
-        <div>
+        <div id="t${ id }">
             <p>${ id }</p>
         </div>
-        <div>
+        <div id="t${ id }">
             <p>${ $('#title').val() }</p>
         </div>
-        <div>
+        <div id="t${ id }">
             <p>${ $('#Description').val() }</p>
         </div>
-        <div>
+        <div id="t${ id }">
             ${ $('#Point').val() }
         </div>
-        <div>
+        <div id="t${ id }">
             <p>${ curTime() }</p>
         </div>
-        <div>
+        <div id="t${ id }">
             ${ curTime($('#due-time').val()) }
         </div></div>`)
             .appendTo(".list-container")
