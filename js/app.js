@@ -108,6 +108,20 @@ const sortByPoint = (arr, order = 'asc') => {
         })
     }
 }
+const sortByTime = (arr, order = 'asc') => {
+    console.log(arr)
+    if (order === 'asc')
+        arr.sort((a, b) => {
+            console.log(a.point - b.point)
+            return a.createdTime - b.createdTime
+        })
+    else {
+        arr.sort((a, b) => {
+            console.log(b.point - a.point)
+            return b.createdTime - a.createdTime
+        })
+    }
+}
 
 $('#points').click((e) => {
     $('#points').toggleClass('fa-angle-up')
@@ -119,6 +133,14 @@ $('#points').click((e) => {
     renderTodos(todos)
 })
 
+$('#createdTime').click((e) => {
+    $('#createdTime').toggleClass('fa-angle-up')
+    if (e.target.classList.contains('fa-angle-up'))
+        sortByTime(todos)
+    else
+        sortByTime(todos, 's')
+    renderTodos(todos)
+})
 
 edit('.fa-pen-to-square')
 progress('input[type=checkbox]')
