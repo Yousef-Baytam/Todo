@@ -36,29 +36,37 @@ const fillLocalStorage = (arr) => {
 const renderTodos = (arr) => {
     $('.list-container .element').remove()
     for (todo of arr) {
-        $(`<div class="element" id="${ todo.taskId }">
+        $(`<div class="element" id="t${ todo.taskId }">
         <i class="fa-solid fa-pen-to-square" id="${ todo.taskId }"></i>
     <div>
     <input type="checkbox" name="Completed" id="Completed" ${ todo.completed ? checked : '' }>
     </div>
-    <div id="${ todo.taskId }">
+    <div id="t${ todo.taskId }">
         <p>${ todo.taskId }</p>
     </div>
-    <div id="${ todo.taskId }">
+    <div id="t${ todo.taskId }">
         <p>${ todo.title }</p>
     </div>
-    <div id="${ todo.taskId }">
+    <div id="t${ todo.taskId }">
         <p>${ todo.description }</p>
     </div>
-    <div id="${ todo.taskId }">
+    <div id="t${ todo.taskId }">
         ${ todo.point }
     </div>
-    <div id="${ todo.taskId }">
+    <div id="t${ todo.taskId }">
         <p>${ todo.createdTime }</p>
     </div>
-    <div id="${ todo.taskId }">
+    <div id="t${ todo.taskId }">
         ${ curTime(todo.dueTime) }
     </div></div>`)
             .appendTo(".list-container")
     }
+}
+
+const updateEdits = (task) => {
+    let id = `#t${ task.taskId }`
+    $(`${ id }:nth-of-type(3)`).html(`<p>${ task.title }</p>`)
+    $(`${ id }:nth-of-type(4)`).html(`<p>${ task.description }</p>`)
+    $(`${ id }:nth-of-type(5)`).html(`<p>${ task.point }</p>`)
+    $(`${ id }:nth-of-type(6)`).html(`<p>${ task.dueTime }</p>`)
 }

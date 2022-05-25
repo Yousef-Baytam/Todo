@@ -3,7 +3,6 @@ let editTaskId = 0
 let targetTask = {}
 
 todos = getLocalStorageItems()
-
 renderTodos(todos)
 
 $('.form-bg').toggle()
@@ -23,7 +22,6 @@ $('#submit').click((e) => {
         }
         $('.form-bg').toggle()
         editTaskId = 0
-        targetTask = {}
         updateEdits(targetTask)
 
     } else {
