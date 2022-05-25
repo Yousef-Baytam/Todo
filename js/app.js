@@ -103,9 +103,7 @@ $('#submit').click((e) => {
                 }
             }
             console.log(targetTask)
-            updateEdits(targetTask)
-            localStorage.clear()
-            fillLocalStorage(todos)
+            updateProgress(targetTask)
             targetTask = {}
         });
 
@@ -155,7 +153,7 @@ $('input[type=checkbox]').change(
                 todos[i] = targetTask
             }
         }
-        updateEdits(targetTask)
+        updateProgress(targetTask)
         localStorage.clear()
         fillLocalStorage(todos)
         targetTask = {}

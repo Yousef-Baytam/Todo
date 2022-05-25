@@ -65,12 +65,13 @@ const renderTodos = (arr) => {
 
 const updateEdits = (task) => {
     let id = `#t${ task.taskId }`
-    let divId = `#div${ task.taskId }`
-    $(divId).toggleClass('done')
     $(`${ id }:nth-of-type(3)`).html(`<p>${ task.title }</p>`)
     $(`${ id }:nth-of-type(4)`).html(`<p>${ task.description }</p>`)
     $(`${ id }:nth-of-type(5)`).html(`<p>${ task.point }</p>`)
     $(`${ id }:nth-of-type(7)`).html(`<p>${ curTime(task.dueTime) }</p>`)
 }
-
+const updateProgress = (task) => {
+    let divId = `#div${ task.taskId }`
+    $(divId).toggleClass('done')
+}
 
