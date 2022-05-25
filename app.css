@@ -23,12 +23,24 @@ body {
     background-color: var(--primary-color);
 }
 
+.h1 {
+    align-self: center;
+}
+
 .header div {
     display: flex;
+    flex-direction: column;
 }
 
 .header div div {
-    height: 2.5em;
+    flex-direction: row;
+    margin: 1em 1em;
+    justify-content: space-between;
+}
+
+.header div div div {
+    flex-direction: row;
+    height: 2em;
     margin: 0em 1em;
     align-self: center;
 }
