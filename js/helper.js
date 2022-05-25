@@ -58,7 +58,9 @@ const renderTodos = (arr) => {
     </div>
     <div id="t${ todo.taskId }">
         ${ curTime(todo.dueTime) }
-    </div></div>`)
+    </div>
+    <i class="fa-solid fa-trash-can"></i>
+    </div>`)
             .appendTo(".list-container")
     }
 }

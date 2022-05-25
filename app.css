@@ -110,6 +110,10 @@ body {
 
 }
 
+.list-header p {
+    min-width: 2.5em;
+}
+
 i {
     cursor: pointer;
     color: var(--tertiary-color);
