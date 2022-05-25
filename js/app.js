@@ -10,7 +10,6 @@ $('.form-bg').toggle()
 $('#add-item').click(() => $('.form-bg').toggle("fast"))
 
 $('#submit').click((e) => {
-    let Task = targetTask
     e.preventDefault()
     if (editTaskId) {
         targetTask.title = $('#title').val()
@@ -18,7 +17,6 @@ $('#submit').click((e) => {
         targetTask.point = $('#Point').val()
         targetTask.dueTime = $('#due-time').val()
         for (let i = 0; i < todos.length; i++) {
-            console.log(todos[i].taskId, targetTask.taskId)
             if (todos[i].taskId === targetTask.taskId) {
                 todos[i] = targetTask
             }
@@ -26,7 +24,8 @@ $('#submit').click((e) => {
         $('.form-bg').toggle()
         editTaskId = 0
         targetTask = {}
-        renderTodos(todos)
+        updateEdits(targetTask)
+
     } else {
         let id = todoId()
         $('.form-bg').toggle("fast")
