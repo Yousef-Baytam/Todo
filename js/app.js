@@ -17,7 +17,10 @@ $('#submit').click((e) => {
         }
     }
     if (targetTask) {
-
+        targetTask.title = $('#title').val()
+        targetTask.description = $('#Description').val()
+        targetTask.point = $('#Point').val()
+        targetTask.dueTime = $('#due-time').val()
     } else {
         let id = todoId()
         $('.form-bg').toggle("fast")
@@ -55,11 +58,11 @@ $('#submit').click((e) => {
             ${ curTime($('#due-time').val()) }
         </div></div>`)
             .appendTo(".list-container")
-        $('#title').val('')
-        $('#Description').val('')
-        $('#Point').val('1')
-        $('#due-time').val('')
     }
+    $('#title').val('')
+    $('#Description').val('')
+    $('#Point').val('1')
+    $('#due-time').val('')
     localStorage.clear()
     fillLocalStorage(todos)
 })
@@ -75,4 +78,8 @@ $('.fa-pen-to-square').click((e) => {
         }
     }
     $('.form-bg').toggle("fast")
+    $('#title').val(targetTask.title)
+    $('#Description').val(targetTask.description)
+    $('#Point').val(targetTask.point)
+    $('#due-time').val(targetTask.dueTime)
 })
