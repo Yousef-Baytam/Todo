@@ -1,4 +1,6 @@
 let todos = []
+let editTaskId = 0
+let targetTask = {}
 
 todos = getLocalStorageItems()
 
@@ -8,19 +10,23 @@ $('.form-bg').toggle()
 $('#add-item').click(() => $('.form-bg').toggle("fast"))
 
 $('#submit').click((e) => {
+    let Task = targetTask
     e.preventDefault()
-    let targetTask = {}
-    for (let todo of todos) {
-        if (todo.taskId === parseInt(e.target.id)) {
-            targetTask = todo
-            break
-        }
-    }
-    if (targetTask) {
+    if (editTaskId) {
         targetTask.title = $('#title').val()
         targetTask.description = $('#Description').val()
         targetTask.point = $('#Point').val()
         targetTask.dueTime = $('#due-time').val()
+        for (let i = 0; i < todos.length; i++) {
+            console.log(todos[i].taskId, targetTask.taskId)
+            if (todos[i].taskId === targetTask.taskId) {
+                todos[i] = targetTask
+            }
+        }
+        $('.form-bg').toggle()
+        editTaskId = 0
+        targetTask = {}
+        renderTodos(todos)
     } else {
         let id = todoId()
         $('.form-bg').toggle("fast")
@@ -70,13 +76,13 @@ $('#submit').click((e) => {
 $('.fa-xmark').click(() => $('.form-bg').toggle("fast"))
 
 $('.fa-pen-to-square').click((e) => {
-    let targetTask = {}
     for (let todo of todos) {
         if (todo.taskId === parseInt(e.target.id)) {
             targetTask = todo
             break
         }
     }
+    editTaskId = targetTask.taskId
     $('.form-bg').toggle("fast")
     $('#title').val(targetTask.title)
     $('#Description').val(targetTask.description)

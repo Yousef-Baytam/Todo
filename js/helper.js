@@ -34,6 +34,7 @@ const fillLocalStorage = (arr) => {
 }
 
 const renderTodos = (arr) => {
+
     for (todo of arr) {
         $(`<div class="element">
         <i class="fa-solid fa-pen-to-square" id="${ todo.taskId }"></i>
@@ -56,7 +57,7 @@ const renderTodos = (arr) => {
         <p>${ todo.createdTime }</p>
     </div>
     <div>
-        ${ todo.dueTime }
+        ${ curTime(todo.dueTime) }
     </div></div>`)
             .appendTo(".list-container")
     }
