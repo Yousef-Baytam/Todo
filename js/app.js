@@ -64,7 +64,21 @@ $('#submit').click((e) => {
         </div></div>`)
             .appendTo(".list-container")
     }
-    $(`#pen${ id }`).click((e) => {
+    edit(`#pen${ id }`)
+    progress(`#Completed${ id }`)
+
+    $('#title').val('')
+    $('#Description').val('')
+    $('#Point').val('1')
+    $('#due-time').val('')
+    localStorage.clear()
+    fillLocalStorage(todos)
+})
+
+$('.fa-xmark').click(() => $('.form-bg').toggle("fast"))
+
+const edit = (selector) => {
+    $(selector).click((e) => {
         for (let todo of todos) {
             let penId = `pen${ todo.taskId }`
             if (penId === e.target.id) {
@@ -79,15 +93,16 @@ $('#submit').click((e) => {
         $('#Point').val(targetTask.point)
         $('#due-time').val(targetTask.dueTime)
     })
+}
+edit('.fa-pen-to-square')
 
-    $(`#Completed${ id }`).change(
+const progress = (selector) =>
+    $(selector).change(
         function (e) {
-            console.log(e)
             for (let todo of todos) {
                 let checkboxId = `Completed${ todo.taskId }`
                 if (checkboxId === e.target.id) {
                     targetTask = todo
-                    console.log(targetTask)
                     break
                 }
             }
@@ -102,59 +117,9 @@ $('#submit').click((e) => {
                     todos[i] = targetTask
                 }
             }
-            console.log(targetTask)
             updateProgress(targetTask)
+            localStorage.clear()
+            fillLocalStorage(todos)
             targetTask = {}
         });
-
-    $('#title').val('')
-    $('#Description').val('')
-    $('#Point').val('1')
-    $('#due-time').val('')
-    localStorage.clear()
-    fillLocalStorage(todos)
-})
-
-$('.fa-xmark').click(() => $('.form-bg').toggle("fast"))
-
-$('.fa-pen-to-square').click((e) => {
-    for (let todo of todos) {
-        let penId = `pen${ todo.taskId }`
-        if (penId === e.target.id) {
-            targetTask = todo
-            break
-        }
-    }
-    editTaskId = targetTask.taskId
-    $('.form-bg').toggle("fast")
-    $('#title').val(targetTask.title)
-    $('#Description').val(targetTask.description)
-    $('#Point').val(targetTask.point)
-    $('#due-time').val(targetTask.dueTime)
-})
-
-$('input[type=checkbox]').change(
-    function (e) {
-        for (let todo of todos) {
-            let checkboxId = `Completed${ todo.taskId }`
-            if (checkboxId === e.target.id) {
-                targetTask = todo
-                break
-            }
-        }
-        if (e.target.checked) {
-            targetTask.completed = true
-        }
-        else {
-            targetTask.completed = false
-        }
-        for (let i = 0; i < todos.length; i++) {
-            if (todos[i].taskId === targetTask.taskId) {
-                todos[i] = targetTask
-            }
-        }
-        updateProgress(targetTask)
-        localStorage.clear()
-        fillLocalStorage(todos)
-        targetTask = {}
-    });
+progress('input[type=checkbox]')
