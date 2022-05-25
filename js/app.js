@@ -79,6 +79,7 @@ $('#submit').click((e) => {
         $('#Point').val(targetTask.point)
         $('#due-time').val(targetTask.dueTime)
     })
+
     $('#title').val('')
     $('#Description').val('')
     $('#Point').val('1')
@@ -104,3 +105,15 @@ $('.fa-pen-to-square').click((e) => {
     $('#Point').val(targetTask.point)
     $('#due-time').val(targetTask.dueTime)
 })
+
+$('input[type=checkbox]').change(
+    function (e) {
+        for (let todo of todos) {
+            let checkboxId = `Completed${ todo.taskId }`
+            if (checkboxId === e.target.id) {
+                targetTask = todo
+                console.log(targetTask)
+                break
+            }
+        }
+    });

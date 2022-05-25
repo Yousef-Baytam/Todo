@@ -70,3 +70,11 @@ const updateEdits = (task) => {
     $(`${ id }:nth-of-type(5)`).html(`<p>${ task.point }</p>`)
     $(`${ id }:nth-of-type(7)`).html(`<p>${ curTime(task.dueTime) }</p>`)
 }
+
+$('input[type=checkbox]').change(
+    function () {
+        console.log('test')
+        if ($(this).is(':checked')) {
+            alert('checked');
+        }
+    });
