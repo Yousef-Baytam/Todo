@@ -112,8 +112,21 @@ $('input[type=checkbox]').change(
             let checkboxId = `Completed${ todo.taskId }`
             if (checkboxId === e.target.id) {
                 targetTask = todo
-                console.log(targetTask)
                 break
             }
         }
+        if ($(this).is(':checked')) {
+            targetTask.completed = true
+        }
+        else {
+            targetTask.completed = false
+        }
+        for (let i = 0; i < todos.length; i++) {
+            if (todos[i].taskId === targetTask.taskId) {
+                todos[i] = targetTask
+            }
+        }
+        localStorage.clear()
+        fillLocalStorage(todos)
+        targetTask = {}
     });

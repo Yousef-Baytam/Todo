@@ -119,3 +119,7 @@ i {
     justify-content: flex-end;
     padding: 1em 1em 0 0;
 }
+
+.done {
+    background-color: var(--primary-color);
+}
