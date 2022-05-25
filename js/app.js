@@ -1,7 +1,6 @@
 let todos = []
 let editTaskId = 0
 let targetTask = {}
-let renderTodos
 todos = getLocalStorageItems()
 
 $('.form-bg').toggle()
@@ -96,85 +95,6 @@ const edit = (selector) =>
     })
 
 edit('.fa-pen-to-square')
-
-const progress = (selector) =>
-    $(selector).change(
-        function (e) {
-            for (let todo of todos) {
-                let checkboxId = `Completed${ todo.taskId }`
-                if (checkboxId === e.target.id) {
-                    targetTask = todo
-                    break
-                }
-            }
-            if (e.target.checked) {
-                targetTask.completed = true
-            }
-            else {
-                targetTask.completed = false
-            }
-            for (let i = 0; i < todos.length; i++) {
-                if (todos[i].taskId === targetTask.taskId) {
-                    todos[i] = targetTask
-                }
-            }
-            updateProgress(targetTask)
-            localStorage.clear()
-            fillLocalStorage(todos)
-            targetTask = {}
-        })
 progress('input[type=checkbox]')
-
-const deleteTask = (selector) =>
-    $(selector).click((e) => {
-        for (let i = 0; i < todos.length; i++) {
-            let TrashId = `trash${ todos[i].taskId }`
-            if (TrashId === e.target.id) {
-                todos = todos.filter(task => {
-                    return task !== todos[i]
-                });
-            }
-        }
-        renderTodos(todos)
-        localStorage.clear()
-        fillLocalStorage(todos)
-        targetTask = {}
-    })
 deleteTask('.fa-trash-can')
-
-renderTodos = (arr) => {
-    $('.list-container .element').remove()
-    for (todo of arr) {
-        $(`<div class="element ${ todo.completed ? 'done' : '' }" id="div${ todo.taskId }">
-        <i class="fa-solid fa-pen-to-square" id="pen${ todo.taskId }"></i>
-    <div>
-    <input type="checkbox" name="Completed" id="Completed${ todo.taskId }" ${ todo.completed ? 'checked' : '' }>
-    </div>
-    <div id="t${ todo.taskId }">
-        <p>${ todo.taskId }</p>
-    </div>
-    <div id="t${ todo.taskId }">
-        <p>${ todo.title }</p>
-    </div>
-    <div id="t${ todo.taskId }">
-        <p>${ todo.description }</p>
-    </div>
-    <div id="t${ todo.taskId }">
-        ${ todo.point }
-    </div>
-    <div id="t${ todo.taskId }">
-        <p>${ todo.createdTime }</p>
-    </div>
-    <div id="t${ todo.taskId }">
-        ${ curTime(todo.dueTime) }
-    </div>
-    <i class="fa-solid fa-trash-can" id="trash${ todo.taskId }"></i>
-    </div>`)
-            .appendTo(".list-container")
-    }
-    edit('.fa-pen-to-square')
-    deleteTask('.fa-trash-can')
-    progress('input[type=checkbox]')
-}
-
 renderTodos(todos)

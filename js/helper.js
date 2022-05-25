@@ -1,3 +1,5 @@
+let renderTodos
+
 const curTime = (x = null) => {
     if (x) {
         return `${ new Date(x).getDate() }:${ new Date(x).getMonth() + 1 }:${ new Date(x).getFullYear() } <br> ${ new Date(x).getHours() }:${ new Date(x).getMinutes() }:${ new Date(x).getSeconds() }`
@@ -45,3 +47,80 @@ const updateProgress = (task) => {
     $(divId).toggleClass('done')
 }
 
+const progress = (selector) =>
+    $(selector).change(
+        function (e) {
+            for (let todo of todos) {
+                let checkboxId = `Completed${ todo.taskId }`
+                if (checkboxId === e.target.id) {
+                    targetTask = todo
+                    break
+                }
+            }
+            if (e.target.checked) {
+                targetTask.completed = true
+            }
+            else {
+                targetTask.completed = false
+            }
+            for (let i = 0; i < todos.length; i++) {
+                if (todos[i].taskId === targetTask.taskId) {
+                    todos[i] = targetTask
+                }
+            }
+            updateProgress(targetTask)
+            localStorage.clear()
+            fillLocalStorage(todos)
+            targetTask = {}
+        })
+
+const deleteTask = (selector) =>
+    $(selector).click((e) => {
+        for (let i = 0; i < todos.length; i++) {
+            let TrashId = `trash${ todos[i].taskId }`
+            if (TrashId === e.target.id) {
+                todos = todos.filter(task => {
+                    return task !== todos[i]
+                });
+            }
+        }
+        renderTodos(todos)
+        localStorage.clear()
+        fillLocalStorage(todos)
+        targetTask = {}
+    })
+
+renderTodos = (arr) => {
+    $('.list-container .element').remove()
+    for (todo of arr) {
+        $(`<div class="element ${ todo.completed ? 'done' : '' }" id="div${ todo.taskId }">
+        <i class="fa-solid fa-pen-to-square" id="pen${ todo.taskId }"></i>
+    <div>
+    <input type="checkbox" name="Completed" id="Completed${ todo.taskId }" ${ todo.completed ? 'checked' : '' }>
+    </div>
+    <div id="t${ todo.taskId }">
+        <p>${ todo.taskId }</p>
+    </div>
+    <div id="t${ todo.taskId }">
+        <p>${ todo.title }</p>
+    </div>
+    <div id="t${ todo.taskId }">
+        <p>${ todo.description }</p>
+    </div>
+    <div id="t${ todo.taskId }">
+        ${ todo.point }
+    </div>
+    <div id="t${ todo.taskId }">
+        <p>${ todo.createdTime }</p>
+    </div>
+    <div id="t${ todo.taskId }">
+        ${ curTime(todo.dueTime) }
+    </div>
+    <i class="fa-solid fa-trash-can" id="trash${ todo.taskId }"></i>
+    </div>`)
+            .appendTo(".list-container")
+    }
+    edit('.fa-pen-to-square')
+    deleteTask('.fa-trash-can')
+    progress('input[type=checkbox]')
+}
