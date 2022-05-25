@@ -108,8 +108,19 @@ const sortByPoint = (arr, order = 'asc') => {
         })
     }
 }
+
+$('#points').click((e) => {
+    $('#points').toggleClass('fa-angle-up')
+    console.log(e)
+    if (e.target.classList.contains('fa-angle-up'))
+        sortByPoint(todos)
+    else
+        sortByPoint(todos, 's')
+    renderTodos(todos)
+})
+
+
 edit('.fa-pen-to-square')
 progress('input[type=checkbox]')
 deleteTask('.fa-trash-can')
 renderTodos(todos)
-sortByPoint(todos, 'x')
