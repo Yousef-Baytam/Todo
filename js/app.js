@@ -9,6 +9,7 @@ $('.form-bg').toggle()
 $('#add-item').click(() => $('.form-bg').toggle("fast"))
 
 $('#submit').click((e) => {
+    let id
     e.preventDefault()
     if (editTaskId) {
         targetTask.title = $('#title').val()
@@ -26,7 +27,7 @@ $('#submit').click((e) => {
         targetTask = {}
 
     } else {
-        let id = todoId()
+        id = todoId()
         $('.form-bg').toggle("fast")
         todos.push({
             completed: false,
@@ -39,7 +40,7 @@ $('#submit').click((e) => {
         })
 
         $(`<div class="element">
-        <i class="fa-solid fa-pen-to-square" id="${ id }"></i>
+        <i class="fa-solid fa-pen-to-square" id="pen${ id }"></i>
         <div>
         <input type="checkbox" name="Completed" id="Completed${ id }">
         </div>
@@ -63,6 +64,21 @@ $('#submit').click((e) => {
         </div></div>`)
             .appendTo(".list-container")
     }
+    $(`#pen${ id }`).click((e) => {
+        for (let todo of todos) {
+            let penId = `pen${ todo.taskId }`
+            if (penId === e.target.id) {
+                targetTask = todo
+                break
+            }
+        }
+        editTaskId = targetTask.taskId
+        $('.form-bg').toggle("fast")
+        $('#title').val(targetTask.title)
+        $('#Description').val(targetTask.description)
+        $('#Point').val(targetTask.point)
+        $('#due-time').val(targetTask.dueTime)
+    })
     $('#title').val('')
     $('#Description').val('')
     $('#Point').val('1')
@@ -75,7 +91,8 @@ $('.fa-xmark').click(() => $('.form-bg').toggle("fast"))
 
 $('.fa-pen-to-square').click((e) => {
     for (let todo of todos) {
-        if (todo.taskId === parseInt(e.target.id)) {
+        let penId = `pen${ todo.taskId }`
+        if (penId === e.target.id) {
             targetTask = todo
             break
         }

@@ -37,7 +37,7 @@ const renderTodos = (arr) => {
     $('.list-container .element').remove()
     for (todo of arr) {
         $(`<div class="element">
-        <i class="fa-solid fa-pen-to-square" id="${ todo.taskId }"></i>
+        <i class="fa-solid fa-pen-to-square" id="pen${ todo.taskId }"></i>
     <div>
     <input type="checkbox" name="Completed" id="Completed${ todo.taskId }" ${ todo.completed ? checked : '' }>
     </div>
