@@ -153,3 +153,23 @@ const dueTimeValidator = setInterval(() => {
         }
     }
 }, 200)
+
+$('#theme').click(() => {
+    console.log('hello')
+    $('#theme').text() === 'Dark mode' ? goBright() : goDark()
+})
+
+const goDark = () => {
+    $('#theme').text('Dark mode')
+    $(':root').css('--main-color', '#353941')
+    $(':root').css('--primary-color', '#26282B')
+    $(':root').css('--secondary-color', '#F0F0F0')
+    $(':root').css('--tertiary-color', '#90B8F8')
+}
+const goBright = () => {
+    $('#theme').text('Light mode')
+    $(':root').css('--main-color', '#cccccc')
+    $(':root').css('--primary-color', '#9b9b9b')
+    $(':root').css('--secondary-color', '#313131')
+    $(':root').css('--tertiary-color', '#2c59a1')
+}
