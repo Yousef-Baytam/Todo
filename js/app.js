@@ -120,7 +120,7 @@ $('#points').click((e) => {
 $('#search').on('keyup', (e) => {
     results = []
     for (let todo of todos) {
-        if (todo.title.toLowerCase().includes(e.target.value.toLowerCase())) {
+        if (todo.title.toLowerCase().includes(e.target.value.toLowerCase()) || todo.description.toLowerCase().includes(e.target.value.toLowerCase())) {
             results.includes(todo) ? '' : results.push(todo)
         }
     }
