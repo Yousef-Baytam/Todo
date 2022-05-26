@@ -1,7 +1,7 @@
 let todos = []
 let editTaskId = 0
 let targetTask = {}
-let results = []
+let results
 todos = getLocalStorageItems()
 
 $('.form-bg').toggle()
@@ -130,6 +130,12 @@ $('#search').on('keyup', (e) => {
         }
     }
     renderTodos(results)
+})
+
+$('#clear').click(() => {
+    localStorage.clear()
+    todos = []
+    renderTodos(todos)
 })
 
 edit('.fa-pen-to-square')
