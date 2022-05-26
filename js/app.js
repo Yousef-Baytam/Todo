@@ -16,7 +16,8 @@ $('#submit').click((e) => {
         targetTask.title = $('#title').val()
         targetTask.description = $('#Description').val()
         targetTask.point = $('#Point').val()
-        targetTask.dueTime = $('#due-time').val()
+        targetTask.dueTime.value = new Date($('#due-time').val())
+        targetTask.dueTime.time = `${ curTime($('#due-time').val()) }`
         for (let i = 0; i < todos.length; i++) {
             if (todos[i].taskId === targetTask.taskId) {
                 todos[i] = targetTask
@@ -42,7 +43,7 @@ $('#submit').click((e) => {
             },
             dueTime: {
                 time: `${ curTime($('#due-time').val()) }`,
-                value: $('#due-time').val()
+                value: new Date($('#due-time').val())
             }
         })
 

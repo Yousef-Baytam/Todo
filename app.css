@@ -143,9 +143,14 @@ i {
 }
 
 .done {
-    background-color: var(--diabled-color);
-    text-decoration: line-through;
-    text-decoration-color: red;
+    background-color: var(--diabled-color) !important;
+    text-decoration: line-through !important;
+    text-decoration-color: red !important;
+}
+
+.done div:last-of-type {
+    font-weight: 500 !important;
+    color: white !important;
 }
 
 .error {
@@ -154,4 +159,13 @@ i {
 
 .error::placeholder {
     color: red;
+}
+
+.dueSoon {
+    background-color: rgb(75, 0, 0);
+}
+
+.dueSoon div:last-of-type {
+    font-weight: bold;
+    color: chartreuse;
 }

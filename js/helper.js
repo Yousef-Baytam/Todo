@@ -40,7 +40,7 @@ const updateEdits = (task) => {
     $(`${ id }:nth-of-type(3)`).html(`<p>${ task.title }</p>`)
     $(`${ id }:nth-of-type(4)`).html(`<p>${ task.description }</p>`)
     $(`${ id }:nth-of-type(5)`).html(`<p>${ task.point }</p>`)
-    $(`${ id }:nth-of-type(7)`).html(`<p>${ curTime(task.dueTime) }</p>`)
+    $(`${ id }:nth-of-type(7)`).html(`<p>${ task.dueTime.time }</p>`)
 }
 const updateProgress = (task) => {
     let divId = `#div${ task.taskId }`
@@ -142,3 +142,14 @@ const validateInput = () => {
         $('.error') ? $('.error').removeClass('error') : ''
     }
 }
+
+const dueTimeValidator = setInterval(() => {
+    for (let todo of todos) {
+        if (new Date(todo.dueTime.value) - new Date() < 60 * 60 * 1000) {
+            $(`#div${ todo.taskId }`).addClass('dueSoon')
+        }
+        if (new Date(todo.dueTime.value) - new Date() > 60 * 60 * 1000) {
+            $(`#div${ todo.taskId }`).removeClass('dueSoon')
+        }
+    }
+}, 500)
