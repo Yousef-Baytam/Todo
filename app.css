@@ -121,6 +121,12 @@ body {
     justify-content: center;
 }
 
+.form div:last-child button {
+    width: 10em;
+    height: 3em;
+    font-size: 0.7em;
+}
+
 .element i {
     min-width: 2.5em;
     text-align: center;
@@ -168,4 +174,20 @@ i {
 .dueSoon div:last-of-type {
     font-weight: bold;
     color: chartreuse;
+}
+
+button {
+    border-radius: 5px;
+    font-size: 0.7em;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    font-family: sans-serif;
+    font-weight: 700;
+    transition: all 100ms linear;
+}
+
+button:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    transform: scale(1.3);
 }
