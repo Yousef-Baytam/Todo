@@ -147,3 +147,11 @@ i {
     text-decoration: line-through;
     text-decoration-color: red;
 }
+
+.error {
+    border-color: red;
+}
+
+.error::placeholder {
+    color: red;
+}

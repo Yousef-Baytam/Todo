@@ -125,3 +125,20 @@ renderTodos = (arr) => {
     progress('input[type=checkbox]')
 }
 
+const validateInput = () => {
+    if ($('#title').val() === '' || $('#Description').val() === '' || $('#due-time').val() === '') {
+        if ($('#title').val() === '') {
+            $('#title').addClass('error')
+            $('#title').attr('placeholder', 'title cannot be empty')
+        }
+        if ($('#Description').val() === '') {
+            $('#Description').addClass('error')
+            $('#Description').attr('placeholder', 'Description cannot be empty')
+        }
+        if ($('#due-time').val() === '')
+            $('#due-time').addClass('error')
+        return true
+    } else {
+        $('.error') ? $('.error').removeClass('error') : ''
+    }
+}

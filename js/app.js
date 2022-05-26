@@ -8,8 +8,10 @@ $('.form-bg').toggle()
 $('#add-item').click(() => $('.form-bg').toggle("fast"))
 
 $('#submit').click((e) => {
-    let id
     e.preventDefault()
+    if (validateInput())
+        return
+    let id
     if (editTaskId) {
         targetTask.title = $('#title').val()
         targetTask.description = $('#Description').val()
