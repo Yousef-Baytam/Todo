@@ -1,7 +1,7 @@
 :root {
-    --main-color: #cccccc;
-    --primary-color: #9b9b9b;
-    --secondary-color: #313131;
+    --main-color: #353941;
+    --primary-color: #26282B;
+    --secondary-color: #F0F0F0;
     --tertiary-color: #90B8F8;
     --diabled-color: #2c3036;
 }
@@ -14,6 +14,7 @@ body {
     color: var(--secondary-color);
     background-color: var(--main-color);
     font-family: 'Courier New', Courier, monospace, sans-serif;
+    overflow-x: hidden;
 }
 
 .header {
@@ -83,7 +84,7 @@ body {
     justify-content: space-between;
     padding: 0 2vw;
     font-family: 'Patrick Hand', cursive;
-    font-size: 1.5em;
+    font-size: 1.3em;
     transition: all 100ms linear;
 }
 
@@ -234,6 +235,9 @@ textarea:focus {
     left: 20px;
 }
 
+.element:hover {
+    transform: scale(1.005);
+}
 
 @media (max-width:1000px) {
 
@@ -265,5 +269,10 @@ textarea:focus {
 
     .header div div {
         margin: 0.3em 1em;
+    }
+
+    .element,
+    .list-header {
+        font-size: 0.8em;
     }
 }

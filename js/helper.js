@@ -152,7 +152,7 @@ const dueTimeValidator = setInterval(() => {
             $(`#div${ todo.taskId }`).removeClass('dueSoon')
         }
     }
-}, 200)
+}, 500)
 
 $('#theme').click(() => {
     console.log('hello')
