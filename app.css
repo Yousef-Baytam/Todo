@@ -83,6 +83,7 @@ body {
     padding: 0 2vw;
     font-family: 'Patrick Hand', cursive;
     font-size: 1.5em;
+    transition: all 100ms linear;
 }
 
 .form-bg {
@@ -222,4 +223,31 @@ input:focus,
 select:focus,
 textarea:focus {
     background-color: var(--tertiary-color);
+}
+
+@media (max-width:1000px) {
+
+    .element,
+    .list-header {
+        font-size: 1em;
+    }
+
+}
+
+@media (max-width:900px) {
+
+    .element div:nth-of-type(2),
+    .list-header div:nth-of-type(2) {
+        display: none;
+    }
+
+}
+
+@media (max-width:600px) {
+
+    .element div:nth-of-type(4),
+    .list-header div:nth-of-type(4) {
+        display: none;
+    }
+
 }
