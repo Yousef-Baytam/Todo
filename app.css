@@ -8,12 +8,12 @@
 
 * {
     margin: 0;
-    font-family: 'Courier New', Courier, monospace, sans-serif;
 }
 
 body {
     color: var(--secondary-color);
     background-color: var(--main-color);
+    font-family: 'Courier New', Courier, monospace, sans-serif;
 }
 
 .header {
@@ -21,7 +21,6 @@ body {
     justify-content: space-between;
     padding: 2vw 10vw;
     background-color: var(--primary-color);
-    border-bottom: 1px solid var(--primary-color);
 }
 
 .h1 {
@@ -70,6 +69,11 @@ body {
     max-width: 20em;
 }
 
+.list-header {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.274);
+    font-weight: 700;
+}
+
 .element,
 .list-header {
     display: flex;
@@ -77,6 +81,8 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 2vw;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.5em;
 }
 
 .form-bg {
