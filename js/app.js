@@ -109,7 +109,12 @@ const sortByPoint = (arr, order = 'asc') => {
 
 $('#points').click((e) => {
     $('#points').toggleClass('fa-angle-up')
-    let todosB = [...todos]
+    let todosB
+    if (results) {
+        todosB = [...results]
+    } else {
+        todosB = [...todos]
+    }
     if (e.target.classList.contains('fa-angle-up'))
         sortByPoint(todosB)
     else
