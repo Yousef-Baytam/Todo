@@ -16,7 +16,7 @@ $('#submit').click((e) => {
         targetTask.title = $('#title').val()
         targetTask.description = $('#Description').val()
         targetTask.point = $('#Point').val()
-        targetTask.dueTime.value = new Date($('#due-time').val())
+        targetTask.dueTime.value = $('#due-time').val()
         targetTask.dueTime.time = `${ curTime($('#due-time').val()) }`
         for (let i = 0; i < todos.length; i++) {
             if (todos[i].taskId === targetTask.taskId) {
@@ -43,7 +43,7 @@ $('#submit').click((e) => {
             },
             dueTime: {
                 time: `${ curTime($('#due-time').val()) }`,
-                value: new Date($('#due-time').val())
+                value: $('#due-time').val()
             }
         })
 
@@ -85,7 +85,14 @@ $('#submit').click((e) => {
     fillLocalStorage(todos)
 })
 
-$('.fa-xmark').click(() => $('.form-bg').toggle("fast"))
+$('.fa-xmark').click(() => {
+    $('.form-bg').toggle("fast")
+    $('#title').val('')
+    $('#Description').val('')
+    $('#Point').val('1')
+    $('#due-time').val('')
+    editTaskId = 0
+})
 
 const edit = (selector) =>
     $(selector).click((e) => {
