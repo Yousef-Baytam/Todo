@@ -1,6 +1,7 @@
 let todos = []
 let editTaskId = 0
 let targetTask = {}
+let results = []
 todos = getLocalStorageItems()
 
 $('.form-bg').toggle()
@@ -117,7 +118,13 @@ $('#points').click((e) => {
 })
 
 $('#search').on('keyup', (e) => {
-    console.log(e.target.value)
+    results = []
+    for (let todo of todos) {
+        if (todo.title.toLowerCase().includes(e.target.value.toLowerCase())) {
+            results.includes(todo) ? '' : results.push(todo)
+        }
+    }
+    renderTodos(results)
 })
 
 edit('.fa-pen-to-square')
