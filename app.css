@@ -38,6 +38,11 @@ body {
     justify-content: space-between;
 }
 
+.search,
+#search {
+    width: 100%;
+}
+
 .header div div div {
     flex-direction: row;
     height: 2em;

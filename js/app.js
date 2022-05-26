@@ -116,6 +116,10 @@ $('#points').click((e) => {
     renderTodos(todosB)
 })
 
+$('#search').on('keyup', (e) => {
+    console.log(e.target.value)
+})
+
 edit('.fa-pen-to-square')
 progress('input[type=checkbox]')
 deleteTask('.fa-trash-can')
