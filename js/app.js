@@ -36,8 +36,14 @@ $('#submit').click((e) => {
             title: `${ $('#title').val() }`,
             description: `${ $('#Description').val() }`,
             point: `${ $('#Point').val() }`,
-            createdTime: `${ curTime() }`,
-            dueTime: `${ $('#due-time').val() }`
+            createdTime: {
+                time: `${ curTime() }`,
+                value: new Date()
+            },
+            dueTime: {
+                time: `${ curTime($('#due-time').val()) }`,
+                value: $('#due-time').val()
+            }
         })
 
         $(`<div class="element" id="div${ id }">
@@ -94,7 +100,7 @@ const edit = (selector) =>
         $('#title').val(targetTask.title)
         $('#Description').val(targetTask.description)
         $('#Point').val(targetTask.point)
-        $('#due-time').val(targetTask.dueTime)
+        $('#due-time').val(targetTask.dueTime.value)
     })
 
 const sortByPoint = (arr, order = 'asc') => {

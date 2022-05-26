@@ -111,10 +111,10 @@ renderTodos = (arr) => {
         ${ todo.point }
     </div>
     <div id="t${ todo.taskId }">
-        <p>${ todo.createdTime }</p>
+        <p>${ todo.createdTime.time }</p>
     </div>
     <div id="t${ todo.taskId }">
-        ${ curTime(todo.dueTime) }
+        ${ todo.dueTime.time }
     </div>
     <i class="fa-solid fa-trash-can" id="trash${ todo.taskId }"></i>
     </div>`)
