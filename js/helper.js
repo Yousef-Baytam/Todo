@@ -9,9 +9,14 @@ const curTime = (x = null) => {
 
 const todoId = () => {
     let rand
+    let ids = []
+    for (let todo of todos)
+        ids.push(todo.taskId)
+    ids.length === 899 && alert('You have reached the max num of todos try deleting some before adding some more')
+    ids.length === 899 && retrun
     do {
         rand = Math.floor(Math.random() * 899 + 100)
-    } while (todos.includes(rand))
+    } while (ids.includes(rand))
     return rand
 }
 
